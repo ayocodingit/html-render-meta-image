@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic OG Image</title>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Dynamic OG Image">
+    <meta property="og:description" content="This is a dynamically generated OG image">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Function to get URL parameters
+            function getQueryParam(param) {
+                let urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            // Get 'image' parameter from URL
+            let imageUrl = getQueryParam('image');
+            
+            if (imageUrl) {
+                // Update Open Graph meta tag
+                $("meta[property='og:image']").attr("content", imageUrl);
+
+                // Show preview on page
+                $("#preview").attr("src", imageUrl);
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Dynamic Open Graph Image Generator</h1>
+    <p>Use this format: <code>?image=YOUR_IMAGE_URL</code></p>
+
+    <h3>Image Preview:</h3>
+    <img id="preview" src="" alt="OG Image Preview" width="300" style="border: 1px solid #ddd; padding: 5px;">
+
+    <p>Share this URL to see the OG image in action.</p>
+</body>
+</html>
